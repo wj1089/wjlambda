@@ -24,6 +24,7 @@ const actions ={
     }
 }
 
+
 const mutations ={
     SEARCH() {
         alert('뮤테이션접속')
