@@ -37,19 +37,17 @@
 
 <script>
     export default {
-        data(){
-            return {searchWord: ""};
+        data() {
+            return {
+                searchWord: ""
+            };
         },
-        created() { //아무것도 안하다가 밑에 method가 실행될때 비로서 이부분도 실행되는것을 Hooking이라한다.
-            alert('CREATE 실행됨.')
-        },
-        methods : {
-            search(){
-                this.$store.dispatch('search/find',this.searchWord)
-
-
-
-
+        methods: {
+            search() {
+                this.$store.dispatch("search/find", this.searchWord)
+            }
+        }
+    };
                 // if(this.searchWord === '벅스뮤직'){
                 //     this.$store.dispatch('crawling/search',this.searchWord)
                 // }else if(this.searchWord === '축구'){
@@ -57,9 +55,7 @@
                 // }else if(this.searchWord === '네이버영화'){
                 //     this.$store.dispatch('movie/search',this.searchWord)
                 // }
-            }
-        }
-    };
+
 </script>
 
 <style>

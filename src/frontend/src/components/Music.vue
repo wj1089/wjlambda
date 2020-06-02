@@ -41,6 +41,9 @@
                 page: 1
             }
         },
+        created() { //아무것도 안하다가 밑에 method가 실행될때 비로서 이부분도 실행되는것을 Hooking이라한다.
+            alert('CREATE in Music.')
+        },
         computed: {
             ...mapState({
                 count: state => state.crawling.count,

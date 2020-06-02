@@ -3,7 +3,7 @@ import router from '@/routers'
 
 const state={
     context:'http://localhost:5000/',
-    movie: [],
+    movies: [],
     count:0
 }
 const actions={
@@ -23,9 +23,10 @@ const actions={
 const mutations={
     MOVIE(state, data){
             alert('뮤테이션 접속' + data.count);
-            state.movie =[];
+            console.log('aaa')
+            state.movies =[];
             state.count = data.count;
-            data.list.forEach(item =>{state.movie.push({
+            data.list.forEach(item =>{state.movies.push({
                                  seq: item.seq,
                                  movieName: item.movieName,
                                  rankDate : item.rankDate

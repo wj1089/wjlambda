@@ -1,13 +1,16 @@
 <template>
-    <h3>축구</h3>
+    <div>
+        축구화면
+    </div>
 </template>
 
 <script>
     export default {
-        name: "Soccer"
+        created() {
+            alert('Soccer')
+        }
     }
 </script>
 
 <style scoped>
-
 </style>

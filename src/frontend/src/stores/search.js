@@ -1,43 +1,61 @@
-import axios from 'axios'
-import routers from '@/routers'
+import router from "@/routers";
 
 const state ={
-    context : 'http://localhost:5000/'
+    context : "http://localhost:5000",
+    searchWord : 'null',
+    pageNumber: '0',
+    soccers : [],
+    movies : [],
+    musics: [],
+    pager: {}
 
 }
 const actions ={
-    async find({commit},searchWord) {
-        axios.get(state.context + `soccer/`+searchWord)//열쇠없이 자유롭게 다니는 구조
-        /*axios.post(state.context + `soccer` ,x,{
-            authorization: 'JWT fefege..',
-            Accept : 'application/json',
-            'Content-Type': 'application/json'S
-        })*/
-            .then(({data})=>{
-                alert('검색된 결과수'+data)
-                commit('SEARCH',data)
-                routers.push('/Google')
-            })
-            .catch(()=>{
-                alert('통신실패!')
-            })
-    }
-}
-//
+    async find({commit},searchWord){
+        alert('>>> '+searchWord)
+        commit("SEARCHWORD",searchWord)
+        switch (searchWord) {
+            case '영화': router.push("/Movie")
+                break
+            case '음악': router.push("/Music")
+                break
+            case '축구': router.push("/Soccer")
+                break
+        }
 
+
+    },
+
+
+}
 const mutations ={
-    SEARCH() {
-        alert('뮤테이션접속')
+    MOVIE(state, data){
+        alert("영화 뮤테이션에서 결과 수 : " + data.count)
+        state.movies = []
+        state.pager = data.pager;
+        data.list.forEach(item => {
+            state.movies.push({
+                seq: item.seq,
+                movieName: item.movieName,
+                rankDate : item.rankDate
+            });
+        });
+    },
+    SEARCHWORD(state, data){
+        alert(`뮤테이션:: ${data}`)
+        state.searchWord = data
     }
 }
-const getters = {
-}
+const getters ={}
 
-export  default {
-    name:'search',
+
+
+export default {
+    name:"search",
     namespaced: true,
     state,
     actions,
     mutations,
     getters
+
 }
